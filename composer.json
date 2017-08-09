@@ -1,0 +1,26 @@
+{
+    "name": "xarasbir/messengerbot",
+    "description": "MessengerBot class for PHP",
+    "keywords": ["template", "composer", "package"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Syarief Asbir",
+            "email": "xarasbir@gmail.com"
+        }
+    ],
+    "type": "project",
+    "require": {
+		"php": ">=5.4",
+        "guzzlehttp/guzzle": "^6.3",
+        "symfony/http-foundation": "2.8.*|3.0.*|3.1.*|3.2.*|3.3.*"
+    },
+	"require-dev": {
+		"phpunit/phpunit": "5.2.*"
+    },
+	"autoload": {
+        "psr-4": {
+            "Xarasbir\\MessengerBot\\": "src/"
+        }
+    }
+}
