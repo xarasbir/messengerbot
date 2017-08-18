@@ -3,6 +3,7 @@
 namespace Xarasbir\MessengerBot;
 
 use Symfony\Component\HttpFoundation\Request;
+use Xarasbir\MessengerBot\Interfaces\RequestArray;
 
 /**
 *  A sample class
@@ -92,10 +93,10 @@ class Bot
 
         if(is_string($message)){
             $params["message"] = ["text" => $message];
-        }else if( $message instanceof Xarasbir\Interfaces\Messageable ){
+        }else if( $message instanceof RequestArray ){
             $params["message"] = $message->toRequestArray();
         }else{
-            throw new \Exception('Message should be a string or an instance of Xarasbir\Interfaces\Messageable');
+            throw new \Exception('Message should be a string or an instance of ' . RequestArray::class);
         }
 
         //TODO
