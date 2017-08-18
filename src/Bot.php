@@ -68,7 +68,8 @@ class Bot
             } 
         }
 
-        //fallback
+        //when no pattern matches
+        //and a fallback is defined
         if(!$hasMatch && $this->fallback != null){
             ($this->fallback)($this, $this->response);
         } 
@@ -118,8 +119,7 @@ class Bot
         $params = [
             'recipient' => [
                 'id' => $this->response->getEntry()->getMessaging()->getSender()->getId(),
-            ],
-            //TODO
+            ], 
             'access_token' => $accessToken,
             'sender_action' => 'typing_on',
         ];
