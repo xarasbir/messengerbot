@@ -12,7 +12,7 @@ use Xarasbir\MessengerBot\Structure\ParsableArray;
 *
 *  @author yourname
 */
-class Generic extends TemplateBase implements RequestArray
+class Generic extends Base implements RequestArray
 {   
 	public $sharable;
 	protected $elements;
@@ -33,7 +33,7 @@ class Generic extends TemplateBase implements RequestArray
 		return $this->elements;
 	}
 
-	public function addElement(Elements\Generic $element)
+	public function addElement(Element $element)
 	{
 		$this->elements[] = $element;
 		return $this;
