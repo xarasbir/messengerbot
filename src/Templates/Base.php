@@ -1,8 +1,7 @@
 <?php 
 
-namespace Xarasbir\MessengerBot\Templates\Components;
-
-use Xarasbir\MessengerBot\Interfaces\RequestArray;
+namespace Xarasbir\MessengerBot\Templates;
+ 
 /**
 *  A sample class
 *
@@ -11,10 +10,15 @@ use Xarasbir\MessengerBot\Interfaces\RequestArray;
 *
 *  @author yourname
 */
-class Attachment implements RequestArray
+abstract class Base 
 {   
-	public function toRequestArray()
+	protected function getRequestArray($payload)
 	{
-		
+		return [
+			"attachment" => [
+				"type"	=>	"template",
+				"payload"	=>	$payload
+			]
+		];
 	}
 }

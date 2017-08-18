@@ -1,6 +1,6 @@
 <?php 
 
-namespace Xarasbir\MessengerBot\Templates\Components;
+namespace Xarasbir\MessengerBot\Components\Buttons;
 
 use Xarasbir\MessengerBot\Interfaces\RequestArray;
 /**
@@ -23,11 +23,14 @@ class Postback extends Button implements RequestArray
 
 	public function toRequestArray()
 	{
-		return [
-			'type'	=>	$this->type,
-			'title'	=>	$this->title,
+		$requestArr = [
+			'type'	=>	$this->type, 
 			'payload'	=>	$this->payload 
 		];
+		if($this->title != null){
+			$requestArr['title'] = $this->title;
+		}
+		return $requestArr;
 	}
 
 	//--------------------

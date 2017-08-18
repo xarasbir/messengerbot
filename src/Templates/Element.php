@@ -1,11 +1,11 @@
 <?php 
 
-namespace Xarasbir\MessengerBot\Templates\Elements;
+namespace Xarasbir\MessengerBot\Templates;
 
 use Xarasbir\MessengerBot\Interfaces\RequestArray;
-use Xarasbir\MessengerBot\Templates\Components\UrlButton;
-use Xarasbir\MessengerBot\Templates\Components\Button;
+use Xarasbir\MessengerBot\Components\Buttons\Url; 
 use Xarasbir\MessengerBot\Structure\ParsableArray;
+use Xarasbir\MessengerBot\Components\Buttons\Button;
 /**
 *  A sample class
 *
@@ -14,7 +14,7 @@ use Xarasbir\MessengerBot\Structure\ParsableArray;
 *
 *  @author yourname
 */
-class Generic implements RequestArray
+class Element implements RequestArray
 {   
 	public $title;
 	public $subtitle;
@@ -38,25 +38,9 @@ class Generic implements RequestArray
 		return $this->buttons;
 	} 
 
-	public function addButton($param1)
+	public function addButton(Button $button)
 	{
-		$button = null;
-		if($param1 instanceof \Closure ){
-			$button = ($param1)($this);
-			//make sure the return value of the closure is a generic element
-			if (!($button instanceof Button)){
-				throw new \Exception("Closure should return an instance of " . Button::class);
-			}
-			$this->buttons[] = $button;
-
-		}else if ($param1 instanceof Button){
-			$button = $param1;
-			$this->buttons[] = $button;
-
-		}else{
-			//if parameter is neither closure or generic element
-			throw new \Exception("Parameter should be either Closure or " . Button::class);
-		} 
+		$this->buttons[] = $button;
 		return $this;
 	} 
 
@@ -81,7 +65,7 @@ class Generic implements RequestArray
 		return new static($title);
 	}
 
-	public function setDefaultAction(UrlButton $defaultAction)
+	public function setDefaultAction(Url $defaultAction)
 	{
 		$this->defaultAction = $defaultAction;
 		return $this;

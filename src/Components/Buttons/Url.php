@@ -1,6 +1,6 @@
 <?php 
 
-namespace Xarasbir\MessengerBot\Templates\Components;
+namespace Xarasbir\MessengerBot\Components\Buttons;
 
 use Xarasbir\MessengerBot\Interfaces\RequestArray;
 /**
@@ -11,7 +11,7 @@ use Xarasbir\MessengerBot\Interfaces\RequestArray;
 *
 *  @author yourname
 */
-class UrlButton extends Button implements RequestArray
+class Url extends Button implements RequestArray
 {   
 	public $url;
 	public $heightRatio;
@@ -27,21 +27,29 @@ class UrlButton extends Button implements RequestArray
 	{
 		parent::__construct("web_url", $title);
 		$this->url = $url; 
-		$this->heightRatio = static::$HEIGHT_FULL;
-		$this->messengerExtension = true; 
+		$this->heightRatio = static::$HEIGHT_FULL;  
 	}
 
 	public function toRequestArray()
 	{
-		return [
-			'type'	=>	$this->type,
-			'title'	=>	$this->title,
+		$requestArr = [
+			'type'	=>	$this->type, 
 			'url'	=>	$this->url,
-			'webview_height_ratio'	=>	$this->heightRatio,
-			'messenger_extensions'	=>	$this->messengerExtension,
-			'fallback_url'			=>	$this->fallbackUrl,
-			'webview_share_button'	=>	$this->shareButton
+			'webview_height_ratio'	=>	$this->heightRatio 
 		];
+		if($this->title != null){
+			$requestArr['title'] = $this->title;
+		}
+		if($this->messengerExtension != null){
+			$requestArr['messenger_extensions']	= $this->messengerExtension;
+		}
+		if($this->fallbackUrl != null){
+			$requestArr['fallback_url']	= $this->fallbackUrl;
+		}
+		if($this->shareButton != null){
+			$requestArr['webview_share_button'] = $this->shareButton;
+		}
+		return $requestArr;
 	}
 
 	//--------------------

@@ -1,6 +1,6 @@
 <?php 
 
-namespace Xarasbir\MessengerBot\Templates\Components;
+namespace Xarasbir\MessengerBot\Components\Buttons;
 
 use Xarasbir\MessengerBot\Interfaces\RequestArray;
 /**

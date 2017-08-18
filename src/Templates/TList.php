@@ -4,6 +4,7 @@ namespace Xarasbir\MessengerBot\Templates;
 
 use Xarasbir\MessengerBot\Interfaces\RequestArray;
 use Xarasbir\MessengerBot\Structure\ParsableArray;
+use Xarasbir\MessengerBot\Components\Buttons\Button;
 /**
 *  A sample class
 *
@@ -12,7 +13,7 @@ use Xarasbir\MessengerBot\Structure\ParsableArray;
 *
 *  @author yourname
 */
-class List extends TemplateBase implements RequestArray
+class TList extends Base implements RequestArray
 {   
 	public $sharable; 
 	public $topElementStyle;
@@ -35,7 +36,7 @@ class List extends TemplateBase implements RequestArray
 		return $this->elements;
 	}
 
-	public function addElement(Elements\Generic $element)
+	public function addElement(Element $element)
 	{
 		$this->elements[] = $element;
 		return $this;
@@ -46,7 +47,7 @@ class List extends TemplateBase implements RequestArray
 		return $this->buttons;
 	}
 
-	public function addButton(Components\Button $button)
+	public function addButton(Button $button)
 	{
 		$this->buttons[] = $button;
 		return $this;
@@ -72,3 +73,4 @@ class List extends TemplateBase implements RequestArray
 	{
 		return new static();
 	}
+}
