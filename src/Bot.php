@@ -36,7 +36,7 @@ class Bot
         $this->middleware = new Manager();
         $this->client = new \GuzzleHttp\Client();
         $this->config = array_merge($this->defaultConfig, $config); 
-        $this->httpRequest = Request::createFromGlobals();
+        $this->httpRequest = Request::createFromGlobals(); 
     }
 
     public function getPatterns()
@@ -117,8 +117,7 @@ class Bot
         }else{
             throw new \Exception('Message should be a string or an instance of ' . RequestArray::class);
         }
-
-        //TODO
+ 
         $params['access_token'] = $this->config["access_token"]; 
 
         $client = $this->client;
@@ -158,8 +157,8 @@ class Bot
 
     public function parseResponse($httpRequest = null)
     { 
-        if($httpRequest === null){
-            //$httpRequest = $this->httpRequest->request->all();
+        if($httpRequest === null){ 
+            //get request from the request body if not explicitly specified
             if (0 === strpos($this->httpRequest->headers->get('Content-Type'), 'application/json')) {
                 $httpRequest = json_decode($this->httpRequest->getContent(), true); 
             }
