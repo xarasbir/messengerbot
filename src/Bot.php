@@ -19,11 +19,11 @@ class Bot
     protected $config;
 
     private $client;
+    private $httpRequest;
     private $defaultConfig = [
         "verify_token"  =>  "",
         "access_token"  =>  ""
     ];
-    private $httpRequest;
 
     function __construct($config = [])
     {
