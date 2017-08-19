@@ -4,6 +4,8 @@ namespace Xarasbir\MessengerBot;
 
 use Symfony\Component\HttpFoundation\Request;
 use Xarasbir\MessengerBot\Interfaces\RequestArray;
+use Xarasbir\MessengerBot\Middleware\Manager;
+
 
 /**
 *   Class Bot
@@ -17,6 +19,7 @@ class Bot
     protected $patterns;
     protected $fallback;
     protected $config;
+    protected $middleware;
 
     private $client;
     private $httpRequest;
@@ -30,6 +33,7 @@ class Bot
         $this->response = null;
         $this->fallback = null;
         $this->patterns = [];
+        $this->middleware = new Manager();
         $this->client = new \GuzzleHttp\Client();
         $this->config = array_merge($this->defaultConfig, $config); 
         $this->httpRequest = Request::createFromGlobals();
@@ -43,6 +47,11 @@ class Bot
     public function getResponse()
     {
         return $this->response;
+    }
+
+    public function getMiddleware()
+    {
+        return $this->middleware;
     }
 
     public function hears($regex, $callback, $onlyPostback = null)
@@ -60,10 +69,22 @@ class Bot
 
         foreach($this->patterns as $pattern){
             //check if request matches the current pattern
-            if($pattern->match($this->response)){ 
-                //invoke callback 
-                $pattern->invokeCallback($this, $this->response);
+            if($pattern->match($this->response)){  
+                $self = $this; 
+                //let it go throught the heard middleware
+                $continue = $this->middleware->heard(
+                    $this->response, 
+                    $pattern, 
+                    $this, 
+                    function($response) use ($self, $pattern) {   
+                        //invoke callback  
+                        return $pattern->invokeCallback($self, $response);   
+                    }
+                ); 
+                
                 $hasMatch = true;
+
+                if($continue === false) break;
             } 
         }
 
@@ -100,7 +121,15 @@ class Bot
         //TODO
         $params['access_token'] = $this->config["access_token"]; 
 
-        $resp = $this->client->post('https://graph.facebook.com/v2.6/me/messages', [ 'form_params' => $params ]); 
+        $client = $this->client;
+        $resp = $this->middleware->sending(
+            $params, 
+            $this, 
+            function($params) use ($client){  
+                 $client->post('https://graph.facebook.com/v2.6/me/messages', [ 'form_params' => $params ]); 
+            }
+        );  
+        
         return $resp;
     }
 
@@ -135,8 +164,17 @@ class Bot
                 $httpRequest = json_decode($this->httpRequest->getContent(), true); 
             }
         }  
-        if(isset($httpRequest["object"]) && $httpRequest["entry"]){
-            $this->response = Response\Response::fromAssoc($httpRequest);    
+
+        if(isset($httpRequest["object"]) && $httpRequest["entry"]){  
+            //let it go throught the received middleware
+            $this->response = $this->middleware->received(
+                $httpRequest, 
+                $this, 
+                function($httpRequest){  
+                    //parse the raw response into our own response object
+                    return Response\Response::fromAssoc($httpRequest);     
+                }
+            ); 
         } 
     }
 
