@@ -8,6 +8,7 @@ use Xarasbir\MessengerBot\Interfaces\RequestArray;
 /**
 *   Class Bot
 *
+*   Handles listening, replying, webhook verification and whatnot
 *
 */
 class Bot
