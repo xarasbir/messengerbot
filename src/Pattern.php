@@ -64,7 +64,7 @@ class Pattern
 		//call callback
 		if($this->callback instanceof \Closure){
 			//dd('calls');
-			($this->callback)($bot,  $response, $this->regexOutput);	
+			return ($this->callback)($bot,  $response, $this->regexOutput);	
 		} 
 	}
 }
