@@ -1,15 +1,14 @@
-<?php 
-
+<?php  
 namespace Xarasbir\MessengerBot\Components\Buttons;
 
 use Xarasbir\MessengerBot\Interfaces\RequestArray;
+
 /**
-*  A sample class
+*  The URL Button can be used to open a web page in the 
+*  in-app browser. This button can be used with the Button 
+*  and Generic Templates. 
 *
-*  Use this section to define what this class is doing, the PHPDocumentator will use this
-*  to automatically generate an API documentation using this information.
-*
-*  @author yourname
+*  https://developers.facebook.com/docs/messenger-platform/send-api-reference/url-button
 */
 class Url extends Button implements RequestArray
 {   

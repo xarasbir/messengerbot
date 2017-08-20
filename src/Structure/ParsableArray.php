@@ -1,15 +1,11 @@
-<?php 
-
+<?php  
 namespace Xarasbir\MessengerBot\Structure;
 
 use Xarasbir\MessengerBot\Interfaces\RequestArray;
+
 /**
-*  A sample class
-*
-*  Use this section to define what this class is doing, the PHPDocumentator will use this
-*  to automatically generate an API documentation using this information.
-*
-*  @author yourname
+*  Extended collection class for easily converting
+*  it's items to array
 */
 class ParsableArray extends \ArrayObject implements RequestArray
 {  

@@ -1,5 +1,4 @@
-<?php 
-
+<?php  
 namespace Xarasbir\MessengerBot;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -7,9 +6,7 @@ use Xarasbir\MessengerBot\Interfaces\RequestArray;
 use Xarasbir\MessengerBot\Middleware\Manager;
 
 
-/**
-*   Class Bot
-*
+/** 
 *   Handles listening, replying, webhook verification and whatnot
 *
 */

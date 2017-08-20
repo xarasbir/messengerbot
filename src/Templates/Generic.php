@@ -1,16 +1,16 @@
-<?php 
-
+<?php  
 namespace Xarasbir\MessengerBot\Templates;
 
 use Xarasbir\MessengerBot\Interfaces\RequestArray;
 use Xarasbir\MessengerBot\Structure\ParsableArray;
+
 /**
-*  A sample class
+*  Use the Generic Template with the Send API to send 
+*  a horizontal scrollable carousel of items, each 
+*  composed of an image attachment, short description 
+*  and buttons to request input from the user.
 *
-*  Use this section to define what this class is doing, the PHPDocumentator will use this
-*  to automatically generate an API documentation using this information.
-*
-*  @author yourname
+*  https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template
 */
 class Generic extends Base implements RequestArray
 {   

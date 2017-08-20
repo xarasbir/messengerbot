@@ -1,14 +1,9 @@
-<?php 
-
+<?php  
 namespace Xarasbir\MessengerBot;
 
-/**
-*  A sample class
-*
-*  Use this section to define what this class is doing, the PHPDocumentator will use this
-*  to automatically generate an API documentation using this information.
-*
-*  @author yourname
+/**  
+*  Pattern class used in matching incoming messages with
+*  a regex pattern. 
 */
 class Pattern
 { 

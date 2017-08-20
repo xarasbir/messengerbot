@@ -1,15 +1,15 @@
 <?php 
-
 namespace Xarasbir\MessengerBot\Components\Buttons;
 
 use Xarasbir\MessengerBot\Interfaces\RequestArray;
+
 /**
-*  A sample class
+*  When this is tapped, we will send a call to the postback 
+*  webhook. This is useful when you want to invoke an action in 
+*  your bot. You can attach a metadata payload to the button that 
+*  will be sent back to your webhook.
 *
-*  Use this section to define what this class is doing, the PHPDocumentator will use this
-*  to automatically generate an API documentation using this information.
-*
-*  @author yourname
+*  https://developers.facebook.com/docs/messenger-platform/send-api-reference/postback-button
 */
 class Postback extends Button implements RequestArray
 {   

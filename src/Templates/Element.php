@@ -1,18 +1,13 @@
-<?php 
-
+<?php  
 namespace Xarasbir\MessengerBot\Templates;
 
 use Xarasbir\MessengerBot\Interfaces\RequestArray;
 use Xarasbir\MessengerBot\Components\Buttons\Url; 
 use Xarasbir\MessengerBot\Structure\ParsableArray;
 use Xarasbir\MessengerBot\Components\Buttons\Button;
+
 /**
-*  A sample class
-*
-*  Use this section to define what this class is doing, the PHPDocumentator will use this
-*  to automatically generate an API documentation using this information.
-*
-*  @author yourname
+*  Generic template element class 
 */
 class Element implements RequestArray
 {   

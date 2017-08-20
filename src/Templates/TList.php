@@ -1,17 +1,16 @@
-<?php 
-
+<?php  
 namespace Xarasbir\MessengerBot\Templates; 
 
 use Xarasbir\MessengerBot\Interfaces\RequestArray;
 use Xarasbir\MessengerBot\Structure\ParsableArray;
 use Xarasbir\MessengerBot\Components\Buttons\Button;
-/**
-*  A sample class
+
+/** 
+*  The List Template is a template that allows you 
+*  to present a set of items vertically. It can be 
+*  rendered in two different ways.
 *
-*  Use this section to define what this class is doing, the PHPDocumentator will use this
-*  to automatically generate an API documentation using this information.
-*
-*  @author yourname
+*  https://developers.facebook.com/docs/messenger-platform/send-api-reference/list-template
 */
 class TList extends Base implements RequestArray
 {   

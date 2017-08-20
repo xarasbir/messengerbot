@@ -1,16 +1,16 @@
-<?php 
-
+<?php  
 namespace Xarasbir\MessengerBot\Templates;
 
 use Xarasbir\MessengerBot\Interfaces\RequestArray; 
 use Xarasbir\MessengerBot\Structure\ParsableArray; 
+
 /**
-*  A sample class
+*  Use the Button Template with the Send API to send a 
+*  text and buttons attachment to request input from the 
+*  user. The buttons can open a URL, or make a back-end call 
+*  to your webhook.
 *
-*  Use this section to define what this class is doing, the PHPDocumentator will use this
-*  to automatically generate an API documentation using this information.
-*
-*  @author yourname
+*  https://developers.facebook.com/docs/messenger-platform/send-api-reference/button-template
 */
 class Button extends Base implements RequestArray
 {   
