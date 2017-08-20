@@ -200,4 +200,18 @@ class Bot
         }
     } 
 
+    public function retrieveSenderProfileInfo()
+    {
+        $this->checkResponse(); 
+        $messaging = $this->response->getEntry()[0]->getMessaging()[0];
+        return $messaging->getSender()->retrieveUserProfile($this->config["verify_token"]);
+    }
+
+    public function retrieveRecipientProfileInfo()
+    {
+        $this->checkResponse(); 
+        $messaging = $this->response->getEntry()[0]->getMessaging()[0];
+        return $messaging->getRecipient()->retrieveUserProfile($this->config["verify_token"], ['name']);
+    }
+
 }

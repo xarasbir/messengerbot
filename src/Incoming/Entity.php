@@ -24,4 +24,28 @@ class Entity
         return $ins;
     }
 
+    public function retrieveUserProfile(
+        $accessToken, 
+        $fields = ['first_name', 'last_name', 'profile_pic', 'gender']
+    ){
+        $client = new \GuzzleHttp\Client();
+        
+        //url
+        $url = "https://graph.facebook.com/v2.6/" . $this->id;
+        
+        //query string
+        $queryString = [];
+        $queryString["fields"] = implode($fields, ",");
+        $queryString["access_token"] = $accessToken;
+        
+        //final url
+        $url = $url . "?" . http_build_query($queryString); 
+
+        //send request
+        $response = $client->get($url);
+
+        //return body 
+        return $response->getBody();
+    }
+
 }
