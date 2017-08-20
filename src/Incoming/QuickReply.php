@@ -1,6 +1,6 @@
 <?php 
 
-namespace Xarasbir\MessengerBot\Response;
+namespace Xarasbir\MessengerBot\Incoming;
 
 /**
 *  A sample class
@@ -10,23 +10,23 @@ namespace Xarasbir\MessengerBot\Response;
 *
 *  @author yourname
 */
-class Entity
+class QuickReply
 { 
-    protected $id; 
+    protected $payload; 
 
-    function __construct($id)
+    function __construct($payload)
     {
-        $this->id = $id;
+        $this->payload = $payload; 
     }
 
-    public function getId()
+    public function getPayload()
     {
-        return $this->id;
+        return $this->payload;
     } 
 
     public static function fromAssoc($assoc)
     {
-        $ins = new static($assoc["id"]);
+        $ins = new static($assoc["payload"]);
         return $ins;
     }
 

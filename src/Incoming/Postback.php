@@ -1,6 +1,6 @@
 <?php 
 
-namespace Xarasbir\MessengerBot\Response;
+namespace Xarasbir\MessengerBot\Incoming;
 
 /**
 *  A sample class

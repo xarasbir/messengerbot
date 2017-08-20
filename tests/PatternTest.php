@@ -2,7 +2,7 @@
 namespace phpUnitTutorial\Test;
 
 use \Xarasbir\MessengerBot\Pattern;
-use \Xarasbir\MessengerBot\Response\Response;
+use \Xarasbir\MessengerBot\Incoming\Response;
 
 /**
  * @covers Email

@@ -171,7 +171,7 @@ class Bot
                 $this, 
                 function($httpRequest){  
                     //parse the raw response into our own response object
-                    return Response\Response::fromAssoc($httpRequest);     
+                    return Incoming\Response::fromAssoc($httpRequest);     
                 }
             ); 
         } 

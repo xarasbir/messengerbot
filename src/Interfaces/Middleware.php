@@ -1,7 +1,7 @@
 <?php 
 namespace Xarasbir\MessengerBot\Interfaces;
 
-use Xarasbir\MessengerBot\Response\Response as IncomingMessage;
+use Xarasbir\MessengerBot\Incoming\Response as IncomingMessage;
 use Xarasbir\MessengerBot\Bot;
 use Xarasbir\MessengerBot\Pattern;
  

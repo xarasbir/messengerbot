@@ -2,7 +2,7 @@
 namespace Xarasbir\MessengerBot\Middleware; 
 
 use Xarasbir\MessengerBot\Interfaces\Middleware;
-use Xarasbir\MessengerBot\Response\Response as IncomingMessage;
+use Xarasbir\MessengerBot\Incoming\Response as IncomingMessage;
 use Xarasbir\MessengerBot\Bot;
  
 /**
