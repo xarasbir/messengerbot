@@ -40,8 +40,7 @@ class Pattern
 		}
 
 		//get value (either text or postback value)
-		$value = $this->getResponseMessagingValue($response);
-		
+		$value = $this->getResponseMessagingValue($response); 
 
 		//match the response value against the current regex
 		$match = preg_match("/" . $this->regex . "/", $value, $output);  
@@ -59,8 +58,7 @@ class Pattern
 	}
 
 	public function invokeCallback($bot, $response)
-	{
-
+	{ 
 		//call callback
 		if($this->callback instanceof \Closure){
 			//dd('calls');
